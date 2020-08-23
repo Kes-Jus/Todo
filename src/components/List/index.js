@@ -6,7 +6,7 @@ class List extends React.Component{
 
     render(){
         return(
-            <ul>
+            <ul id="todo-list">
                 {this.props.textlist.map(element=>(
                     <ListItem  text={element.text}></ListItem>  
                 ))}  
