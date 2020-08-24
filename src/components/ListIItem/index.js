@@ -5,7 +5,8 @@ class ListItem extends React.Component{
 
     render(){
         return(
-            <li>{this.props.text}</li>
+            <li>{this.props.text}
+            <a href="#">[x]</a></li>
         )
     }
 }

@@ -13,9 +13,10 @@ class Main extends React.Component{
     handleAdd = (event)=>{
         let todo = document.getElementById("todo-list")
         let li =  document.createElement("li")
-        let text = document.createTextNode('azeazeazeaze')
-        li.appendChild(text)
+        let text = document.getElementById("task-name").value
+        li.innerText=text
         todo.appendChild(li)
+        
     }
  
     
@@ -33,7 +34,7 @@ class Main extends React.Component{
 
         return(
             <>
-
+         <input type="text" id="task-name" name="task-name" placeholder="Enter your task"/>
             <button onClick={this.handleAdd}>add</button>
             <button onClick={this.handelDelete}>Delete</button>
            

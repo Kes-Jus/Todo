@@ -8,7 +8,8 @@ class List extends React.Component{
         return(
             <ul id="todo-list">
                 {this.props.textlist.map(element=>(
-                    <ListItem  text={element.text}  onClick={this.handelDelete}></ListItem> 
+                    <ListItem  text={element.text} >
+                    </ListItem> 
 
                 ))}  
             </ul>
