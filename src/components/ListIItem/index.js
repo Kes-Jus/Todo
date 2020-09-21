@@ -15,7 +15,10 @@ class ListItem extends React.Component{
      let ul =li.parentNode
        ul.removeChild(li) 
     
- }
+    
+    }
+
+
     render(){
         return(
             <li >{this.props.text}
