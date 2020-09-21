@@ -1,5 +1,7 @@
 {
   "name": "todo",
+  "author":"Merouane Mohamed Elamine and Toumi Abdrahman",
+  "description": "Todo-List that's made  our taskes checked",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

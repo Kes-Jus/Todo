@@ -1,0 +1,24 @@
+li{
+    color: black;
+    width: 300px;
+    background-color: #c2ff97;
+    height: 50px;
+    margin: 20px auto;
+    border-radius: 10px;
+    list-style: none;
+    font-weight: bolder;
+    position: relative;
+}
+li a{
+    text-decoration:none ;
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    margin:0 5px;
+    font-size:15px ;
+
+}
+
+    
+
+
