@@ -1,43 +1,17 @@
-body {
-    background-color: rgb(255, 99, 71);
-    position: relative;
-}
-.app{
-    background-color:#feb6ff;
-    min-height: 500px;
-    width:400px;
-    margin :40px auto;
-
-    
+.nav{
+    display: grid;
+    grid-template-columns: repeat(6,auto);
+    background-color: #9b2335;
    
 }
-input{
-    padding:0 20px;
-    border:0px;
-    background-color: rgb(7, 112, 137);
- height: 50px;
- width: 200px;
- margin:20px ;
- font-size: 18px;
- border-radius: 10px;
- color: white;
-}
-::-webkit-input-placeholder{
-    color: white;
+.title{
+    grid-column: 4/5;
+    font-family: system-ui;
+    color:black;
 
 }
-input:focus ,button:focus{
-    outline: none;
-}
-button{
-    height: 50px;
-    width: 50px;
-    border-radius: 10px;
-    border: 0;
-    margin: 3px;
-    background-color: #c2ff97;
-    cursor: pointer;
-    font-weight: bolder;
-
-
+body{
+background-color: #939597;
+  font-family: system-ui;
+  color:black;
 }

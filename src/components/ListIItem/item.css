@@ -1,24 +1,48 @@
+.tasklist{
+    grid-column: 6/10;
+   
+}
+.titleT{
+    grid-column: 6/11;
+    margin-left: 25%;
+}
+#todo-list{
+ 
+    color: white;
+    font-size: larger;
+
+}
 li{
-    color: black;
+    position: relative;
+    color: white;
     width: 300px;
-    background-color: #c2ff97;
-    height: 50px;
+    background-color: #008CBA;
+    height: 80px;
     margin: 20px auto;
     border-radius: 10px;
     list-style: none;
     font-weight: bolder;
-    position: relative;
+}
+.text{
+   margin-left: 20px;
+
+
+
 }
 li a{
     text-decoration:none ;
     position: absolute;
-    right: 10px;
+     right: 10px; 
+    bottom: 55px;
     cursor: pointer;
     margin:0 5px;
     font-size:15px ;
 
 }
+li p{
+    margin-left: 10px;
+}
 
-    
+
 
 
