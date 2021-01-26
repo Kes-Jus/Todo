@@ -27,7 +27,7 @@ if (this.handelCheckRepeatedTasks(new_tasks_list , text )){
         await this.setState({
             tasks: new_tasks_list,
         })
-        console.log(this.state.tasks)
+    
     }
 
     
@@ -48,9 +48,12 @@ if (this.handelCheckRepeatedTasks(new_tasks_list , text )){
         return result
     }
     handleDelete =(key)=> {
-        console.log(key)
-        this.state.tasks.forEach(element =>{
+        let tasks =  this.state.tasks
+      tasks.forEach(element =>{
             if(element.text === key){
+                tasks.splice(key, 1)
+                this.setState({tasks})
+
                
             }
         })
