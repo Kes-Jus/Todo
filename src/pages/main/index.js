@@ -1,72 +1,40 @@
 import React from "react"
 import List from "../../components/List/index"
 import "./main.css"
+import moment from "moment"
 
 
-const list = [/*{'text' : "bla bla bla"}, {'text' : "bla bla bla"}, {'text' : "bla bla bla"},{'text' : "bla bla bla"}*/]
 class Main extends React.Component {
-    constructor(props) {
+    constructor (props){
         super(props)
         this.state = {
-            tasks: list
+            tasks: []
         }
 
-        this.handleAddReactWay = this.handleAddReactWay.bind()
-        this.handelDeleteJsWay = this.handelDeleteJsWay.bind()
-
-
     }
+      
 
-    // add tasks to list js way
-    /*
-    handleAddJSWay = (event)=>{
-        let todo = document.getElementById("todo-list")
-        let li =  document.createElement("li")
+    handleAddReactWay = async (event) => {
         let text = document.getElementById("task-name").value
-        let a = document.createElement("a") 
-        a.innerText= "[x]"
-        a.href="#"
-
-        a.addEventListener("click",event=>{
-          let li= event.target .parentNode
-          let ul =li.parentNode
-            ul.removeChild(li) 
-          // event.currentTarget.parentElement.remove();
-       
-        })
-          li.innerText=text
-          li.appendChild(a)
-        todo.appendChild(li)
-        
-        
-    }
-    */
-
-    handleAddReactWay = (event) => {
-
-        let text = document.getElementById("task-name").value
-
         let new_tasks_list = this.state.tasks
-        if (this.handelCheckRepeatedTasks(new_tasks_list, text) === true) {
-            new_tasks_list.push({ 'text': text })
+if (this.handelCheckRepeatedTasks(new_tasks_list , text )){
 
-        }
-
-        this.setState({
-            tasks: new_tasks_list
+    await new_tasks_list.push({ 'text': text, 'time':moment().format('MMMM Do YYYY, h:mm a') })
+}
+        
+        
+      
+        await this.setState({
+            tasks: new_tasks_list,
         })
-
+        console.log(this.state.tasks)
     }
 
-
-    // delete tasks js Way
+    
     handelDeleteJsWay = () => {
         let todo = document.getElementById("todo-list")
         todo.removeChild(todo.childNodes[0])
-
     }
-
-
 
     handelCheckRepeatedTasks = (list, text) => {
         let result = true
@@ -79,6 +47,20 @@ class Main extends React.Component {
 
         return result
     }
+    handleDelete =(key)=> {
+        console.log(key)
+        this.state.tasks.forEach(element =>{
+            if(element.text === key){
+               
+            }
+        })
+    
+
+
+    }
+
+    
+
     render() {
 
         return (
@@ -99,7 +81,9 @@ class Main extends React.Component {
                     </div>
                     <div className="tasklist">
                         <h2 className="titleT" >Your Tasks :</h2>
-                        <List textlist={list}></List>
+                        <List handleDelete={this.handleDelete} tasks={this.state.tasks}>
+                        </List>
+
                     </div>
                 </div>
             </div>

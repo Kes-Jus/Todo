@@ -1,39 +1,38 @@
 import React from "react"
 import "./item.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faTrash } from '@fortawesome/free-solid-svg-icons'
-import moment from 'moment'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+
+
+
+class ListItem extends React.Component {
 
  
 
-class ListItem extends React.Component{
 
-    constructor(props){
-      super(props)
-       this.handelDeleteX = this.handelDeleteX.bind()
+  
+    render() {
+        return (
+         
 
-   }
-     handelDeleteX=(event)=> {
-      let li= event.target .parentNode.parentNode.parentNode
-      let ul = li.parentNode
-      ul.removeChild(li) 
-
-    }
-
-
-    render(){
-        return(
-           
-            <li >
-            <p className="text">{this.props.text}</p>
-            <a href="#"  onClick={this.handelDeleteX}><FontAwesomeIcon icon={faTrash}  size="lg"/></a>  
-           {<p>{moment().format('MMMM Do YYYY, h:mm a')}</p>}
+            <li key={this.props.text}>
+                <p className="text">{this.props.text}</p>
+                <span onClick={(event )=>{ 
+                    console.log(event)
+                    this.props.handleDelete(this.props.text)}}><FontAwesomeIcon icon={faTrash} size="lg"/></span>
+                <p>{this.props.time}</p>
+              
+                
             </li>
-        
+
+
+
         )
     }
 
 }
+
+
 
 
 export default ListItem
