@@ -3,14 +3,17 @@ import List from "./list"
 import "./main.css"
 import moment from "moment"
 
-class Main extends React.Component {
+        class Main extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             tasks: [],
-            taskName: ""
+            taskName: "",
+            apiResponse: ""
         }
     }
+
+ 
     updateTaskName = event => {
         this.setState({
             taskName: event.target.value,
@@ -53,11 +56,31 @@ class Main extends React.Component {
         })
     }
 
+   async callAPI() {
+        await fetch("http://localhost:9000/main",{
+            headers: {
+                'Content-Type':' application/x-www-form-urlencoded; charset=UTF-8',
+                'Access-Control-Allow-Origin': '*'
+            }
+        })
+            .then(res => res.text())
+            .then(res => this.setState({ apiResponse: res }));   
+
+           
+    }
+    
+    componentWillMount() {
+        this.callAPI();
+    }
+ 
+   
+  
+   
     render() {
         return (
             <div className="app">
                 <div className="nav">
-                    <h1 className="title">ToDo-List</h1>
+                    <h1 className="title">{this.state.apiResponse}</h1>
                 </div>
                 <div className="container">
                     <div className="liststyle">
@@ -78,6 +101,6 @@ class Main extends React.Component {
             </div>
         )
     }
-}
+        }
 
 export default Main
