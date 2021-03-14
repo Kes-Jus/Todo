@@ -2,18 +2,18 @@ import React from "react"
 import List from "./list"
 import "./main.css"
 import moment from "moment"
+import axios from "axios"
 
-        class Main extends React.Component {
+class Main extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             tasks: [],
             taskName: "",
-            apiResponse: ""
         }
     }
 
- 
+
     updateTaskName = event => {
         this.setState({
             taskName: event.target.value,
@@ -21,13 +21,19 @@ import moment from "moment"
     }
 
     handleAddReactWay = () => {
+
+
         if (this.state.taskName !== '') {
             let cloneTasks = this.state.tasks
             if (this.handelCheckRepeatedTasks(this.state.taskName))
-                this.state.tasks.push({ 'text': this.state.taskName, 'time': moment().format('MMMM Do YYYY, h:mm a') })
-            this.setState({ tasks: cloneTasks })
-     }
+               this.state.tasks.push({ 'text': this.state.taskName, 'time': moment().format('MMMM Do YYYY, h:mm a') })
+            
+               const article = { text: this.state.taskName, time: moment().format('MMMM Do YYYY, h:mm a') };
+                axios.post('http://localhost:4000/api/main', article)
+                .then(response => this.setState({ tasks: cloneTasks }));
+        }
     }
+
 
     handelDeleteJsWay = () => {
         if (this.state.tasks.length > 0) {
@@ -56,35 +62,24 @@ import moment from "moment"
         })
     }
 
-   async callAPI() {
-        await fetch("http://localhost:9000/main",{
-            headers: {
-                'Content-Type':' application/x-www-form-urlencoded; charset=UTF-8',
-                'Access-Control-Allow-Origin': '*'
-            }
-        })
-            .then(res => res.text())
-            .then(res => this.setState({ apiResponse: res }));   
+    componentDidMount() {
 
-           
+
     }
-    
-    componentWillMount() {
-        this.callAPI();
-    }
- 
-   
-  
-   
+
+
+
+
     render() {
         return (
             <div className="app">
                 <div className="nav">
-                    <h1 className="title">{this.state.apiResponse}</h1>
+                    <h1 className="title">Todo List</h1>
                 </div>
                 <div className="container">
                     <div className="liststyle">
                         <h2 >Enter Your Task : </h2>
+
                         <input type="text" id="task-name" name="task-name" placeholder="Enter your task" onChange={this.updateTaskName} value={this.state.taskName} />
                     </div>
                     <div className="btns">
@@ -101,6 +96,7 @@ import moment from "moment"
             </div>
         )
     }
-        }
+}
+
 
 export default Main
